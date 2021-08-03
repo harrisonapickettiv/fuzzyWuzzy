@@ -1,5 +1,3 @@
-// This is a comment
+import { getValues } from "./fuzzyWuzzy";
 
-const helloWorld = () => {
-  console.log("Hello, World!");
-};
+document.querySelector("#btnSubmit").onclick = getValues;
