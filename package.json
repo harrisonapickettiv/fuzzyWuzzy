@@ -1,8 +1,7 @@
 {
-  "name": "js-site-template",
+  "name": "fuzzy-wuzzy",
   "version": "1.0.0",
-  "main": "dist/index.html",
-  "repository": "git@github.com:harrisonapickettiv/js-site-template.git",
+  "repository": "git@github.com:harrisonapickettiv/fuzzyWuzzy.git",
   "author": "Harrison A. Pickett, IV <38798125+harrisonapickettiv@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
@@ -15,6 +14,7 @@
     "parcel": "^2.0.0-beta.2"
   },
   "dependencies": {
+    "@fontsource/caveat": "^4.5.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.2",
