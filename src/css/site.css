@@ -68,3 +68,11 @@ footer .social > a:hover {
   font-family: "Caveat", cursive;
   font-size: 2rem;
 }
+
+.even {
+  font-weight: bolder;
+}
+
+.odd {
+  font-weight: 100;
+}

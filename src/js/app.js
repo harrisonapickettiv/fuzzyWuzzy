@@ -1,3 +1,3 @@
-import { getValues } from "./fuzzyWuzzy";
+import { fuzzyWuzzy } from "./fuzzyWuzzy";
 
-document.querySelector("#btnSubmit").onclick = getValues;
+document.querySelector("#btnSubmit").onclick = fuzzyWuzzy;
