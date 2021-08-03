@@ -175,21 +175,102 @@
           <div class="col-lg-8">
             <pre class="line-numbers">
               <code class="language-javascript">
-                // This is a comment
-
-                const helloWorld = () => {
-                  console.log("Hello, World!");
+                // get the values from the page
+                const getValues = () => {
+                  const start = parseInt(document.querySelector("#startValue").value);
+                  const end = parseInt(document.querySelector("#endValue").value);
+                
+                  const validated =
+                    Number.isInteger(start) && Number.isInteger(end) && start >= 0 && end >= 0;
+                
+                  return validated ? { start, end } : { error: true, start, end };
                 };
 
+                // generate numbers from startvalue to the endValue
+                const genNumbers = (start, end) => {
+                  const numbers = [];
+                
+                  for (let i = start; i <= end; i++) {
+                    numbers.push(i);
+                  }
+                
+                  return numbers;
+                };
+
+                // display the numbers and mark even numbers bold
+                const displayNumbers = (numbers) => {
+                  let html = "";
+                
+                  for (const i of numbers) {
+                    // prismjs doesn't play nice with template literals
+                    // view the code on github with the link in the navigation bar
+                    html += `${i}`;
+                  }
+                
+                  document.querySelector("#results").innerHTML = html;
+                };
+
+                // display a pretty error
+                const displayError = () => {
+                  // prismjs doesn't play nice with template literals
+                  // view the code on github with the link in the navigation bar
+                  document.querySelector("#results").innerHTML = `
+                    <div class="bg-danger text-light">
+                      <h2 class="text-light">Error:</h2>
+                      <p>Start and end values must both be a positive integer.</p>
+                    </div>
+                  `;
+                };
+
+                // put it all together in a single controller
+                const fuzzyWuzzy = () => {
+                  const { start, end, error } = getValues();
+                
+                  if (error) {
+                    return displayError();
+                  }
+                
+                  const numbers = genNumbers(start, end);
+                  displayNumbers(numbers);
+                };
               </code>
             </pre>
           </div>
           <div class="col-lg-4">
-            <p>The code is structured in one function.</p>
-            <h5>Hello World</h5>
             <p>
-              Hello World is a function that logs 'Hello, World!' to the
-              console.
+              The code is structured as several functions with a primary
+              controller exported to the application.
+            </p>
+            <h5>Get Values</h5>
+            <p>
+              A function that gets startValue and endValue from the user
+              interface. Returns the values and whether they are valid input.
+            </p>
+            <h5>Gen Numbers</h5>
+            <p>
+              A function that generates a series of numbers from a start and end
+              value. Returns an array containing the series.
+            </p>
+            <h5>Display Numbers</h5>
+            <p>
+              A function that takes an array of numbers and generates HTML table
+              row markup. Numbers are displayed one per row ordered by array
+              index. Each number is marked with a class indicating whether it is
+              even or odd. The markup is inserted into the table element with id
+              "results".
+            </p>
+            <h5>Display Error</h5>
+            <p>
+              A function that inserts an error message into the element with id
+              "results". The message indicates that inputs must be positive
+              integers in white text on a red background.
+            </p>
+            <h5>Fuzzy Wuzzy</h5>
+            <p>
+              The main application function. Calls getValues to get and validate
+              user input. Then displays an error if getValues finds an error in
+              input. Otherwise, calls genNumbers followed by displayNumbers to
+              generate and display a table to the user.
             </p>
           </div>
         </div>
